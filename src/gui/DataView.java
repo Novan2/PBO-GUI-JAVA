@@ -4,10 +4,13 @@ import javafx.geometry.Insets;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 import javafx.scene.control.cell.PropertyValueFactory;
 import data_mahasiswa.mahasiswa;
 import data_mahasiswa.MahasiswaData;
+import data_mahasiswa.MahasiswaFileUtil;
 
 public class DataView {
 
@@ -17,6 +20,11 @@ public class DataView {
 
         Label title = new Label("Data Mahasiswa");
 
+        // Tombol untuk refresh data dari database
+        HBox buttonBox = new HBox(10);
+        Button btnRefresh = new Button("🔄 Refresh dari Database");
+        Button btnDelete = new Button("🗑️ Hapus Terpilih");
+        
         TableView<mahasiswa> table = new TableView<>();
         table.setItems(MahasiswaData.listMahasiswa);
 
@@ -32,7 +40,23 @@ public class DataView {
         table.getColumns().addAll(colNama, colNim, colUmur);
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-        layout.getChildren().addAll(title, table);
+        // Action untuk tombol Refresh
+        btnRefresh.setOnAction(e -> {
+            MahasiswaFileUtil.loadDariDatabase();
+            table.refresh();
+        });
+
+        // Action untuk tombol Delete
+        btnDelete.setOnAction(e -> {
+            mahasiswa selected = table.getSelectionModel().getSelectedItem();
+            if (selected != null) {
+                MahasiswaFileUtil.deleteMahasiswa(selected.getNim());
+                table.refresh();
+            }
+        });
+
+        buttonBox.getChildren().addAll(btnRefresh, btnDelete);
+        layout.getChildren().addAll(title, buttonBox, table);
         return layout;
     }
 }

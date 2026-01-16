@@ -39,9 +39,15 @@ public class DashboardView {
 
             try {
                 int umur = Integer.parseInt(umurStr);
-                MahasiswaData.listMahasiswa.add(new mahasiswa(nama, nim, umur));
-                MahasiswaFileUtil.simpanKeFile();
-                info.setText("✅ Data berhasil disimpan!");
+                mahasiswa mhs = new mahasiswa(nama, nim, umur);
+                
+                // Memasukkan data ke database dan file CSV
+                if (MahasiswaFileUtil.tambahMahasiswa(mhs)) {
+                    info.setText("✅ Data berhasil disimpan ke database!");
+                } else {
+                    info.setText("❌ Gagal menyimpan data ke database!");
+                    return;
+                }
 
                 tfNama.clear();
                 tfNim.clear();
