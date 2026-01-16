@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "java.project.sourcePaths": [
         "src",
         "."
@@ -18,3 +19,11 @@
         "lib\\jfx.incubator.richtext.jar"
     ]
 }
+=======
+    "java.project.sourcePaths": ["src"],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar"
+    ]
+}
+>>>>>>> sandi/main

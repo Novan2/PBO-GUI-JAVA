@@ -13,12 +13,6 @@ public class App extends Application {
         // Membuat Scene dengan root dari mainView
         Scene scene = new Scene(mainView.getMainLayout(), 800, 600);
 
-<<<<<<< HEAD
-=======
-        // Menghubungkan file CSS
-        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
-
->>>>>>> sandi/main
         primaryStage.setTitle("Aplikasi JavaFX Rapi");
         primaryStage.setScene(scene);
         primaryStage.show();
