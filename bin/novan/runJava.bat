@@ -1,2 +1,0 @@
-"C:\Program Files\Java\jdk-25\bin\javac.exe" --module-path "C:\javafx-sdk-25.0.1\lib" --add-modules javafx.controls -d bin src\App.java
-"C:\Program Files\Java\jdk-25\bin\java.exe" --module-path "C:\javafx-sdk-25.0.1\lib" --add-modules javafx.controls -cp bin App
