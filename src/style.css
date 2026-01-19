@@ -13,9 +13,10 @@
 
 .menu-label {
     -fx-text-fill: #ecf0f1;
-    -fx-font-size: 14px;
     -fx-font-weight: bold;
-    -fx-padding: 0 0 10 0;
+    -fx-padding: 4 0 4 0;
+    -fx-font-size: 16px;
+    -fx-alignment: CENTER;
 }
 
 /* Button Styling (Default) */
@@ -44,12 +45,13 @@
 
 /* Navigation Button Specific Style */
 .nav-button {
-    -fx-background-color: transparent;
+    /* -fx-background-color: transparent; */
     -fx-text-fill: #ecf0f1;
     -fx-alignment: CENTER_LEFT;
     -fx-background-radius: 8px;
     -fx-border-color: transparent;
     -fx-border-width: 1px;
+    -fx-background-color: rgba(12, 18, 57, 0.19);
 }
 
 .nav-button:hover {
@@ -60,4 +62,8 @@
 
 .nav-button:pressed {
     -fx-background-color: rgba(255, 255, 255, 0.2);
+}
+
+.button-box {
+    -fx-alignment: CENTER;
 }

@@ -10,7 +10,6 @@ import javafx.stage.Stage;
 
 public class App extends Application {
 
-    @Override
     public void start(Stage primaryStage) {
         MahasiswaFileUtil.loadDariFile();
 
@@ -34,7 +33,7 @@ public class App extends Application {
             }
         }
 
-        primaryStage.setTitle("Aplikasi JavaFX Rapi");
+        primaryStage.setTitle("Aplikasi Data Mahasiswa");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

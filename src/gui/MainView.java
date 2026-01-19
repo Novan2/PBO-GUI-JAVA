@@ -27,10 +27,11 @@ public class MainView {
 
         Label menuLabel = new Label("MENU UTAMA");
         menuLabel.getStyleClass().add("menu-label"); // Menggunakan class CSS
+        menuLabel.setMaxWidth(Double.MAX_VALUE);
 
         Button btnHome = new Button("Dashboard");
         Button btnData = new Button("Data Mahasiswa");
-        Button btnSettings = new Button("Pengaturan");
+        // Button btnSettings = new Button("Pengaturan");
 
         // Mengatur agar tombol memenuhi lebar sidebar dan menambahkan class CSS
         btnHome.setMaxWidth(Double.MAX_VALUE);
@@ -42,14 +43,14 @@ public class MainView {
         btnData.setOnAction(e -> mainLayout.setCenter(new DataView().getView()));
 
 
-        btnSettings.setMaxWidth(Double.MAX_VALUE);
-        btnSettings.getStyleClass().add("nav-button");
+        // btnSettings.setMaxWidth(Double.MAX_VALUE);
+        // btnSettings.getStyleClass().add("nav-button");
 
-        sidebar.getChildren().addAll(menuLabel, btnHome, btnData, btnSettings);
+        sidebar.getChildren().addAll(menuLabel, btnHome, btnData);
         return sidebar;
     }
 
-    // Fungsi untuk membuat Panel Konten Tengah
+    // Fungsi untuk mem55buat Panel Konten Tengah
     private StackPane createContent() {
         StackPane contentArea = new StackPane();
         contentArea.setPadding(new Insets(20));

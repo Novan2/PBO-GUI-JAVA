@@ -10,8 +10,8 @@ import data_mahasiswa.MahasiswaFileUtil;
 public class DashboardView {
 
     public VBox getView() {
-        VBox layout = new VBox(10);
-        layout.setPadding(new Insets(20));
+        VBox layout = new VBox(14);
+        layout.setPadding(new Insets(20 ));
 
         Label title = new Label("Input Data Mahasiswa");
 
@@ -49,9 +49,9 @@ public class DashboardView {
                     return;
                 }
 
-                tfNama.clear();
-                tfNim.clear();
-                tfUmur.clear();
+                // tfNama.clear();
+                // tfNim.clear();
+                // tfUmur.clear();
             } catch (NumberFormatException ex) {
                 info.setText("Umur harus berupa angka!");
             }

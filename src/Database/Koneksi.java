@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+
+import data_mahasiswa.MahasiswaData;
 import data_mahasiswa.mahasiswa;
 
 public class Koneksi {
@@ -60,6 +62,27 @@ public class Koneksi {
             System.err.println("Gagal mengambil data: " + e.getMessage());
         }
         return null;
+    }
+    
+    // Method untuk mengambil data mahasiswa berdasarkan NIM
+    public static void loadDariDatabase() {
+        try {
+            MahasiswaData.listMahasiswa.clear();
+            ResultSet rs = Koneksi.getAllMahasiswa();
+            
+            if (rs != null) {
+                while (rs.next()) {
+                    String nama = rs.getString("nama");
+                    String nim = rs.getString("nim");
+                    int umur = rs.getInt("umur");
+                    MahasiswaData.listMahasiswa.add(new mahasiswa(nama, nim, umur));
+                }
+                rs.getStatement().close();
+                System.out.println("Data berhasil dimuat dari database");
+            }
+        } catch (SQLException e) {
+            System.err.println("Gagal load data dari database: " + e.getMessage());
+        }
     }
 
     // Method untuk update data mahasiswa
