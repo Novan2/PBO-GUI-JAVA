@@ -33,7 +33,7 @@ public class Koneksi {
     public static boolean insertMahasiswa(mahasiswa m) {
         String sql = "INSERT INTO mahasiswa (nama, nim, umur) VALUES (?, ?, ?)";
         try (Connection conn = getConn();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
             
             pstmt.setString(1, m.getNama());
             pstmt.setString(2, m.getNim());

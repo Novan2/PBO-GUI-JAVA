@@ -33,7 +33,7 @@ public class DashboardView {
             String umurStr = tfUmur.getText();
 
             if (nama.isEmpty() || nim.isEmpty() || umurStr.isEmpty()) {
-                info.setText("⚠️ Semua field wajib diisi!");
+                info.setText("Semua field wajib diisi!");
                 return;
             }
 
@@ -43,9 +43,9 @@ public class DashboardView {
                 
                 // Memasukkan data ke database dan file CSV
                 if (MahasiswaFileUtil.tambahMahasiswa(mhs)) {
-                    info.setText("✅ Data berhasil disimpan ke database!");
+                    info.setText("Data berhasil disimpan ke database!");
                 } else {
-                    info.setText("❌ Gagal menyimpan data ke database!");
+                    info.setText("Gagal menyimpan data ke database!");
                     return;
                 }
 
@@ -53,7 +53,7 @@ public class DashboardView {
                 tfNim.clear();
                 tfUmur.clear();
             } catch (NumberFormatException ex) {
-                info.setText("⚠️ Umur harus berupa angka!");
+                info.setText("Umur harus berupa angka!");
             }
         });
 

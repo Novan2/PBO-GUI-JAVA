@@ -22,8 +22,8 @@ public class DataView {
 
         // Tombol untuk refresh data dari database
         HBox buttonBox = new HBox(10);
-        Button btnRefresh = new Button("🔄 Refresh dari Database");
-        Button btnDelete = new Button("🗑️ Hapus Terpilih");
+        Button btnRefresh = new Button("Refresh dari Database");
+        Button btnDelete = new Button("Hapus Terpilih");
         
         TableView<mahasiswa> table = new TableView<>();
         table.setItems(MahasiswaData.listMahasiswa);

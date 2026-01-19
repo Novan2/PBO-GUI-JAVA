@@ -7,4 +7,3 @@ public class MahasiswaData {
     public static ObservableList<mahasiswa> listMahasiswa 
     = FXCollections.observableArrayList();
 }
-
