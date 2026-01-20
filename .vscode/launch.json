@@ -9,7 +9,7 @@
             "name": "Launch Java Fiji",
             "request": "launch",
             "mainClass": "App",
-            "vmArgs": "--module-path \"E:\\PBO-GUI-JAVA\\PBO-GUI-JAVA\\lib\" --add-modules javafx.controls,javafx.fxml -Dprism.order=d3d -Dprism.verbose=true",
+            "vmArgs": "--module-path \"C:\\Kampus\\UG\\PBO\\Java\\openjfx-21.0.2_windows-x64_bin-sdk\\javafx-sdk-21.0.2\\lib\" --add-modules javafx.controls,javafx.fxml",
         },
         {
             "type": "java",
