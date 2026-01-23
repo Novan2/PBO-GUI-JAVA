@@ -4,8 +4,9 @@ import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import data_mahasiswa.mahasiswa;
-import data_mahasiswa.MahasiswaData;
-import data_mahasiswa.MahasiswaFileUtil;
+import Database.Koneksi;
+// import data_mahasiswa.MahasiswaData;
+// import data_mahasiswa.MahasiswaFileUtil;
 
 public class DashboardView {
 
@@ -42,7 +43,7 @@ public class DashboardView {
                 mahasiswa mhs = new mahasiswa(nama, nim, umur);
                 
                 // Memasukkan data ke database dan file CSV
-                if (MahasiswaFileUtil.tambahMahasiswa(mhs)) {
+                if (Koneksi.insertMahasiswa(mhs)) {
                     info.setText("Data berhasil disimpan ke database!");
                 } else {
                     info.setText("Gagal menyimpan data ke database!");
@@ -55,6 +56,7 @@ public class DashboardView {
             } catch (NumberFormatException ex) {
                 info.setText("Umur harus berupa angka!");
             }
+            Koneksi.loadDariDatabase();
         });
 
         layout.getChildren().addAll(title, tfNama, tfNim, tfUmur, btnSimpan, info);

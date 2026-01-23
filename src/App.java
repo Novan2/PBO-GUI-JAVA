@@ -2,7 +2,8 @@ import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import data_mahasiswa.MahasiswaFileUtil;
+import Database.Koneksi;
+// import data_mahasiswa.MahasiswaFileUtil;
 import gui.MainView;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -11,7 +12,7 @@ import javafx.stage.Stage;
 public class App extends Application {
 
     public void start(Stage primaryStage) {
-        MahasiswaFileUtil.loadDariDatabase();
+        Koneksi.loadDariDatabase();
 
         // Memanggil kelas UI Utama
         MainView mainView = new MainView();

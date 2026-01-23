@@ -49,6 +49,17 @@ public class Koneksi {
         }
     }
 
+    public static boolean tambahLocalMahasiswa(mahasiswa m) {
+        boolean berhasil = Koneksi.insertMahasiswa(m);
+        if (berhasil) {
+            MahasiswaData.listMahasiswa.add(m);
+            System.out.println("Data mahasiswa berhasil ditambahkan");
+        } else {
+            System.out.println("Gagal menambahkan data mahasiswa ke database");
+        }
+        return berhasil;
+    }
+
     // Method untuk mengambil semua data mahasiswa dari database
     public static ResultSet getAllMahasiswa() {
         String sql = "SELECT * FROM mahasiswa";

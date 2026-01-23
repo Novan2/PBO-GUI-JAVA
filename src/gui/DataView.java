@@ -5,7 +5,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextInputDialog;
+// import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
@@ -13,11 +13,11 @@ import javafx.scene.layout.GridPane;
 import javafx.geometry.Pos;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
+// import javafx.scene.layout.Priority;
 import javafx.scene.control.cell.PropertyValueFactory;
 import data_mahasiswa.mahasiswa;
 import data_mahasiswa.MahasiswaData;
-import data_mahasiswa.MahasiswaFileUtil;
+// import data_mahasiswa.MahasiswaFileUtil;
 import Database.Koneksi;
 
 public class DataView {
@@ -91,14 +91,14 @@ public class DataView {
                                 int newUmur = Integer.parseInt(tfUmur.getText());
                                 return new mahasiswa(tfNama.getText(), tfNim.getText(), newUmur);
                             } catch (NumberFormatException ex) {
-                                return null; // Or handle error appropriately
+                                return null;
                             }
                         }
                         return null;
                     });
 
                     dialog.showAndWait().ifPresent(updated -> {
-                        MahasiswaFileUtil.updateMahasiswa(oldNim, updated);
+                        Koneksi.updateMahasiswa(oldNim, updated);
                         getTableView().getItems().set(getIndex(), updated);
                         getTableView().refresh();
                     });
@@ -108,7 +108,7 @@ public class DataView {
                     mahasiswa m = getTableView().getItems().get(getIndex());
                     if (m == null)
                         return;
-                    MahasiswaFileUtil.deleteMahasiswa(m.getNim());
+                    Koneksi.deleteMahasiswa(m.getNim());
                     getTableView().getItems().remove(m);
                 });
             }
