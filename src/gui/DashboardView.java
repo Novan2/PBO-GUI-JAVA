@@ -33,7 +33,7 @@ public class DashboardView {
             String umurStr = tfUmur.getText();
 
             if (nama.isEmpty() || nim.isEmpty() || umurStr.isEmpty()) {
-                info.setText("Semua field wajib diisi!");
+                info.setText("Semua field wajib diisi!" );
                 return;
             }
 

@@ -1,51 +1,16 @@
 package data_mahasiswa;
 
-import java.io.*;
-import java.util.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import Database.Koneksi;
 
 public class MahasiswaFileUtil {
 
-    private static final String FILE_PATH = "data_mahasiswa.csv";
-
-    public static void simpanKeFile() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
-            for (mahasiswa m : MahasiswaData.listMahasiswa) {
-                writer.write(m.getNama() + "," + m.getNim() + "," + m.getUmur());
-                writer.newLine();
-            }
-        } catch (IOException e) {
-            System.out.println("Gagal menyimpan file: " + e.getMessage());
-        }
-    }
-
-    public static void loadDariFile() {
-        File file = new File(FILE_PATH);
-        if (!file.exists()) return;
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
-            String line;
-            MahasiswaData.listMahasiswa.clear();
-            while ((line = reader.readLine()) != null) {
-                String[] data = line.split(",");
-                String nama = data[0];
-                String nim = data[1];
-                int umur = Integer.parseInt(data[2]);
-                MahasiswaData.listMahasiswa.add(new mahasiswa(nama, nim, umur));
-            }
-        } catch (IOException e) {
-            System.out.println("Gagal membaca file: " + e.getMessage());
-        }
-    }
-
     // Method untuk menambah data mahasiswa ke database
     public static boolean tambahMahasiswa(mahasiswa m) {
         boolean berhasil = Koneksi.insertMahasiswa(m);
         if (berhasil) {
             MahasiswaData.listMahasiswa.add(m);
-            simpanKeFile();
             System.out.println("Data mahasiswa berhasil ditambahkan");
         } else {
             System.out.println("Gagal menambahkan data mahasiswa ke database");
@@ -58,7 +23,7 @@ public class MahasiswaFileUtil {
         try {
             MahasiswaData.listMahasiswa.clear();
             ResultSet rs = Koneksi.getAllMahasiswa();
-            
+
             if (rs != null) {
                 while (rs.next()) {
                     String nama = rs.getString("nama");
@@ -87,7 +52,6 @@ public class MahasiswaFileUtil {
                     break;
                 }
             }
-            simpanKeFile();
             System.out.println("Data mahasiswa berhasil diupdate");
         } else {
             System.out.println("Gagal mengupdate data mahasiswa");
@@ -100,7 +64,6 @@ public class MahasiswaFileUtil {
         boolean berhasil = Koneksi.deleteMahasiswa(nim);
         if (berhasil) {
             MahasiswaData.listMahasiswa.removeIf(m -> m.getNim().equals(nim));
-            simpanKeFile();
             System.out.println("Data mahasiswa berhasil dihapus");
         } else {
             System.out.println("Gagal menghapus data mahasiswa");

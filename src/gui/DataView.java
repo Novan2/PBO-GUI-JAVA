@@ -31,7 +31,7 @@ public class DataView {
         // Tombol untuk refresh data dari database
         HBox buttonBox = new HBox(10);
         Button btnRefresh = new Button("Refresh dari Database");
-        
+
         TableView<mahasiswa> table = new TableView<>();
         table.setItems(MahasiswaData.listMahasiswa);
 
@@ -60,7 +60,8 @@ public class DataView {
 
                 btnEdit.setOnAction(e -> {
                     mahasiswa m = getTableView().getItems().get(getIndex());
-                    if (m == null) return;
+                    if (m == null)
+                        return;
                     String oldNim = m.getNim();
 
                     Dialog<mahasiswa> dialog = new Dialog<>();
@@ -86,7 +87,12 @@ public class DataView {
 
                     dialog.setResultConverter(btn -> {
                         if (btn == ButtonType.OK) {
-                            return new mahasiswa(tfNama.getText(), tfNim.getText(), m.getUmur());
+                            try {
+                                int newUmur = Integer.parseInt(tfUmur.getText());
+                                return new mahasiswa(tfNama.getText(), tfNim.getText(), newUmur);
+                            } catch (NumberFormatException ex) {
+                                return null; // Or handle error appropriately
+                            }
                         }
                         return null;
                     });
@@ -100,7 +106,8 @@ public class DataView {
 
                 btnDelete.setOnAction(e -> {
                     mahasiswa m = getTableView().getItems().get(getIndex());
-                    if (m == null) return;
+                    if (m == null)
+                        return;
                     MahasiswaFileUtil.deleteMahasiswa(m.getNim());
                     getTableView().getItems().remove(m);
                 });
@@ -127,11 +134,11 @@ public class DataView {
 
         // Action untuk tombol Delete
         // btnDelete.setOnAction(e -> {
-        //     mahasiswa selected = table.getSelectionModel().getSelectedItem();
-        //     if (selected != null) {
-        //         MahasiswaFileUtil.deleteMahasiswa(selected.getNim());
-        //         table.refresh();
-        //     }
+        // mahasiswa selected = table.getSelectionModel().getSelectedItem();
+        // if (selected != null) {
+        // MahasiswaFileUtil.deleteMahasiswa(selected.getNim());
+        // table.refresh();
+        // }
         // });
 
         buttonBox.getChildren().addAll(btnRefresh);
