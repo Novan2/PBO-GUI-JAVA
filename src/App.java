@@ -18,7 +18,7 @@ public class App extends Application {
         MainView mainView = new MainView();
 
         // Membuat Scene dengan root dari mainView
-        Scene scene = new Scene(mainView.getMainLayout(), 800, 600);
+        Scene scene = new Scene(mainView.getMainLayout(), 1000, 500);
 
         // Menghubungkan file CSS, dengan fallback ke file system agar tidak gagal saat
         // resource tidak ter-copy

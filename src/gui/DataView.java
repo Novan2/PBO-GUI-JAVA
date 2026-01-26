@@ -56,7 +56,6 @@ public class DataView {
             {
                 // center buttons inside cell
                 box.setAlignment(Pos.CENTER);
-                // setAlignment(Pos.CENTER);
 
                 btnEdit.setOnAction(e -> {
                     mahasiswa m = getTableView().getItems().get(getIndex());
@@ -69,8 +68,8 @@ public class DataView {
                     dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
 
                     GridPane grid = new GridPane();
-                    grid.setHgap(8);
-                    grid.setVgap(12);
+                    grid.setHgap(20);
+                    grid.setVgap(40);
 
                     TextField tfNama = new TextField(m.getNama());
                     TextField tfNim = new TextField(m.getNim());
